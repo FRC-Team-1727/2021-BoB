@@ -12,4 +12,18 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {}
+public final class Constants {
+  
+  public static final class DriveConstants{
+    public static final double kWheelDiameter = 6; //replace this with empirical wheel diameter after finding it
+    
+  }
+  
+  public static final class ShooterConstants{
+    public static final double kP = 0.0008;
+    public static final double kI = 0.000002;
+    public static final double kD = 2;
+    
+  }
+
+}
