@@ -1,16 +1,29 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.IntakeConstants;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kForward;
+import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.kReverse;
 
 public class IntakeSubsystem extends SubsystemBase {
+  private VictorSPX intake = new VictorSPX(IntakeConstants.kIntakePort);
+  private DoubleSolenoid intakePiston = new DoubleSolenoid(IntakeConstants.kIntakePistonPort[0], IntakeConstants.kIntakePistonPort[1]);
+  //initializes intakePiston to start in the reverse position so that we can use toggle() method
+  intakePiston.set(kReverse);
   
-  
-  public void intake(double spd){
-    //sets the intake roller motor at speed spd
+  //sets the intake roller motor at 100% speed
+  public void intake(){
+    intake.set(ControlMode.PercentOutput, 1);
   }
   
+  //toggles the intake pistons between in and out position
   public void intakePiston(){
-    //toggles the intake pistons between in and out position
+    intakePiston.toggle();
   }
   
 }
