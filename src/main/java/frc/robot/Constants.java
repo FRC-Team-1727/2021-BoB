@@ -25,5 +25,11 @@ public final class Constants {
     public static final double kD = 2;
     
   }
+  
+  public static final class ClimbConstants{
+    public static final int[] kHookPorts = new int[] {0, 2};
+    public static final int[] kClimbPorts1 = new int[] {4, 6};
+    public static final int[] kClimbPorts2 = new int[] {5, 7};
+  }
 
 }
