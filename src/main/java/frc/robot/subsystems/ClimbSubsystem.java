@@ -14,29 +14,21 @@ public class ClimbSubsystem extends SubsystemBase {
                                                                             ClimbConstants.kClimbPorts1[1]),
                                                          new DoubleSolenoid(ClimbConstants.kClimbPorts2[0],
                                                                             ClimbConstants.kClimbPorts2[1]) }
-  private boolean firstTime = true;
+  //initializes pistons in reverse position so that we can use toggle() method
+  for (DoubleSolenoid s : climb){
+    s.set(kReverse);
+  }
   
   //retracts the tiny piston to extend the hooks
   public void releaseHook(){
     hook.set(kReverse);
-    
   }
   
   //toggles the state of the climb pistons
   public void toggleClimb(){
-    //if first time this method gets called, extend both pistons, otherwise, toggle
-    if (firstTime){
-      for (DoubleSolenoid s : climb){
-        s.set(kForward);
-      }
-      firstTime = false;
-      
-    }else{
-      for (DoubleSolenoid s : climb){
-        s.toggle();
-      }
+    for (DoubleSolenoid s : climb){
+      s.toggle();
     }
-    
   }
   
 }
