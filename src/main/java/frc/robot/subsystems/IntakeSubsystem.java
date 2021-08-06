@@ -16,9 +16,9 @@ public class IntakeSubsystem extends SubsystemBase {
   //initializes intakePiston to start in the reverse position so that we can use toggle() method
   intakePiston.set(kReverse);
   
-  //sets the intake roller motor at 100% speed
-  public void intake(){
-    intake.set(ControlMode.PercentOutput, 1);
+  //sets the intake roller motor at speed spd
+  public void intake(double spd){
+    intake.set(ControlMode.PercentOutput, spd);
   }
   
   //toggles the intake pistons between in and out position
