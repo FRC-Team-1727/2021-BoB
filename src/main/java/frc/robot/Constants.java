@@ -26,6 +26,11 @@ public final class Constants {
     
   }
   
+  public static final class IntakeConstants{
+    public static final int kintakePort = 8;
+    public static final int[] kintakePistonPort = new int[] {1, 3};
+  }
+  
   public static final class ClimbConstants{
     public static final int[] kHookPorts = new int[] {0, 2};
     public static final int[] kClimbPorts1 = new int[] {4, 6};
