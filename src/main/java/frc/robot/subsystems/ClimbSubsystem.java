@@ -13,9 +13,9 @@ public class ClimbSubsystem extends SubsystemBase {
                                                                             kClimbPorts1[1]),
                                                          new DoubleSolenoid(kClimbPorts2[0],
                                                                             kClimbPorts2[1]) }
-  //initializes pistons in reverse position so that we can use toggle() method
+  //initializes pistons in current position so that they can use toggle() method
   for (DoubleSolenoid s : climb){
-    s.set(kReverse);
+    s.set(s.get());
   }
   
   //retracts the tiny piston to extend the hooks
