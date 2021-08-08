@@ -6,14 +6,16 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class IntakeMotorCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intakeSubsystem;
+  private double speed;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public IntakeMotorCommand(IntakeSubsystem subsystem) {
+  public IntakeMotorCommand(IntakeSubsystem subsystem, double spd) {
     m_intakeSubsystem = subsystem;
+    speed = spd;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_intakeSubsystem);
   }
@@ -25,7 +27,7 @@ public class IntakeMotorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intakeSubsystem.intake(-1);
+    m_intakeSubsystem.intake(speed);
   }
 
   // Called once the command ends or is interrupted.
@@ -47,6 +49,5 @@ from 0 -> -1 in the duration of the trigger press rather than current (8/8/21) w
 
 other things to consider:
 - current intended way to work is to have this command run on the wpilib button whileHeld condition so that it will automatically
-cancel itself when button is released, but this may have to change in the future
-- add a parameter in the command to base intake speed on so that we don't need to have separate commands to reverse intake
+cancel itself when button is released
 */
