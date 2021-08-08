@@ -15,7 +15,7 @@ public class IntakeSubsystem extends SubsystemBase {
   //initializes intakePiston in current position so that it can use toggle() method
   intakePiston.set(intakePiston.get());
   
-  //sets the intake roller motor at speed spd
+  //sets the intake roller motor at percent speed spd
   public void intake(double spd){
     intake.set(ControlMode.PercentOutput, spd);
   }
