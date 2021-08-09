@@ -7,9 +7,7 @@ public class IntakePistonCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsytem m_intakeSubsystem;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
+  /*
    * @param subsystem The subsystem used by this command.
    */
   public IntakePistonCommand (IntakeSubsystem subsystem) {
