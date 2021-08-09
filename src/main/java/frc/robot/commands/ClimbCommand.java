@@ -3,7 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.ClimbSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class HookReleaseCommand extends CommandBase {
+public class CilmbCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final ClimbSubsystem m_climbSubsystem;
 
