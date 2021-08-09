@@ -8,9 +8,7 @@ public class IntakeMotorCommand extends CommandBase {
   private final IntakeSubsystem m_intakeSubsystem;
   private double speed;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
+  /*
    * @param subsystem The subsystem used by this command.
    */
   public IntakeMotorCommand(IntakeSubsystem subsystem, double spd) {
@@ -44,7 +42,7 @@ public class IntakeMotorCommand extends CommandBase {
 }
 
 /* note: old code has a functionality where pressing the uptake button will automatically set intake at -1 speed
-also, old code also sets intake speed the same as -xbox trigger value, meaning as it gets pressed down the intake speed will go
+also, old code sets intake speed the same as -xbox trigger value, meaning as it gets pressed down the intake speed will go
 from 0 -> -1 in the duration of the trigger press rather than current (8/8/21) way of setting it immediately at -1
 
 other things to consider:
