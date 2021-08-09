@@ -10,7 +10,7 @@ public class HookReleaseCommand extends CommandBase {
   /**
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ClimbSubsystem subsystem) {
+  public HookReleaseCommand(ClimbSubsystem subsystem) {
     m_climbSubsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_climbSubsystem);
