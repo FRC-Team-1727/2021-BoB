@@ -7,7 +7,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystem.IntakeSubsystem;
+
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -19,8 +22,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  
+  XboxController xbox = new XboxController(0);//address in future: whether we want constants for this too
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -34,7 +40,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    
+    //new JoystickButton (xbox
+    
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -46,3 +56,9 @@ public class RobotContainer {
     return m_autoCommand;
   }
 }
+/*
+ran into problem: it doesn't seem like a JoystickButton can be created with an xbox trigger since the 
+trigger returns a range of double values 0.0-1.0 based on how far it is pressed down instead of being
+a button, so we may need to create a custom trigger - need to look into this further
+
+*/
