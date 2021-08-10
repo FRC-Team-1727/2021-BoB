@@ -53,6 +53,8 @@ public class RobotContainer {
     //climb bindings
     new JoystickButton(xbox, Button.kX.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
     new JoystickButton(xbox, Button.kY.value).whenPressed(new ClimbCommand(m_climbSubsystem));
+    //intake bindings
+    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
       
   }
 
