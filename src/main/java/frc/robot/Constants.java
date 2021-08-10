@@ -23,6 +23,9 @@ public final class Constants {
     public static final double kP = 0.0008;
     public static final double kI = 0.000002;
     public static final double kD = 2;
+    public static final double kF = 0;
+    
+    public static final int[] kFlywheelPort = new int[] {9, 10};
     
   }
   
