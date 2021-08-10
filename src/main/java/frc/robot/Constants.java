@@ -15,6 +15,14 @@ package frc.robot;
 public final class Constants {
   
   public static final class DriveConstants{
+    public static final int[] kLDrivePort = new int[] {3, 4};
+    public static final int[] kLEncoderPort = new int[] {0, 1};
+    public static final boolean kLEncoderReverse = true;
+    
+    public static final int[] kRDrivePort = new int[] {1, 2};
+    public static final int[] kREncoderPort = new int[] {4, 5};
+    public static final boolean kREncoderReverse = false;
+    
     public static final double kWheelDiameter = 6; //replace this with empirical wheel diameter after finding it
     
   }
