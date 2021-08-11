@@ -32,7 +32,7 @@ public class AimCommand extends CommandBase {
   public void execute() {
     if(m_visionSubsystem.hasTarget()){
       m_shooterSubsystem.adjust(m_visionSubsystem.getArea());
-      //m_driveSubsystem.align(m_visionSubsystem.getAngleX()); uncomment this when DriveSubsystem gets implemented
+      m_driveSubsystem.align(m_visionSubsystem.getAngleX());
     }
   }
 
