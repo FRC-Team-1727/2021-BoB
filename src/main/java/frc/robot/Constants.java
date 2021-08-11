@@ -27,7 +27,6 @@ public final class Constants {
     public static final double kWheelDiameter = 6; //replace this with empirical wheel diameter after finding it
     public static final double kVisionP = 0.02;
     public static final double kVisionLimit = 0.008;
-    
   }
   
   public static final class ShooterConstants{
@@ -37,7 +36,7 @@ public final class Constants {
     public static final double kF = 0;
     
     public static final int[] kFlywheelPort = new int[] {9, 10};
-    
+    public static final int kAllowableError = 60;
   }
   
   public static final class IntakeConstants{
