@@ -34,8 +34,9 @@ public class ShooterSubsystem extends SubsystemBase {
     updateConstants();
   }
   
+  //whether flywheel speed is within a certain range of target speed
   public boolean canShoot(){ //need to figure out how to coordinate this method with uptake command
-    return Math.abs(encoder.getVelocity() - setpoint) < 60;
+    return Math.abs(encoder.getVelocity() - setpoint) < kAllowableError;
   }
   
   public void setSpeed(double stpt){
@@ -56,7 +57,7 @@ public class ShooterSubsystem extends SubsystemBase {
       controller.setReference(setpoint, ControlType.kVelocity);
     }
   }
-  
+  //helper method for adjust() - calculates what the speed should be given area
   public double getSetpoint(double area){
     return (448.058 * Math.pow((area - 1.880411), 2)) + 3321.09; //I don't think using constants would make sense here
   }
