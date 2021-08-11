@@ -14,10 +14,15 @@ import frc.robot.commands.IntakeMotorCommand;
 import frc.robot.commands.IntakePistonCommand;
 import frc.robot.commands.HookReleaseCommand;
 import frc.robot.commands.ClimbCommand;
+import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.AimCommand;
 
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystem.IntakeSubsystem;
-import frc.robot.subsystem.ClimbSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -32,7 +37,10 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   private final CimbSubsystem m_climbSubsystem = new ClimbSubsystem();
-
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
+  private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
+    
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   
   XboxController xbox = new XboxController(0);//address in future: whether we want constants for this too
@@ -41,6 +49,10 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    //default commands
+    m_shooterSubsystem.setDefaultCommand(new ShooterCommand(m_shooterSubsystem, 3200));
+    /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
+    when all commands get canceled when we go into teleop*/
   }
 
   /**
@@ -55,7 +67,12 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kY.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
     new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
-      
+    new JoystickButton(xbox, Button.kB.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1);
+    //shooter bindings
+    new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
+    new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
+    new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new AimCommand(m_driveSubsystem, m_shooterSubsystem, m_visionSubsystem));
+    
   }
 
   /**
