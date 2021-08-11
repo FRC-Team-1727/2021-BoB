@@ -16,6 +16,7 @@ import frc.robot.commands.HookReleaseCommand;
 import frc.robot.commands.ClimbCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.AimCommand;
+improt frc.robot.commands.DriveCommand;
 
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -53,6 +54,7 @@ public class RobotContainer {
     m_shooterSubsystem.setDefaultCommand(new ShooterCommand(m_shooterSubsystem, 3200));
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
+    m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kLeft), xbox.getX(GenericHID.Hand.kRight)));
   }
 
   /**
