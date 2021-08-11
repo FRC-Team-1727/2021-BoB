@@ -12,8 +12,11 @@ import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 public class IntakeSubsystem extends SubsystemBase {
   private VictorSPX intake = new VictorSPX(kIntakePort);
   private DoubleSolenoid intakePiston = new DoubleSolenoid(kIntakePistonPort[0], kIntakePistonPort[1]);
+  
   //initializes intakePiston in current position so that it can use toggle() method
-  intakePiston.set(intakePiston.get());
+  public IntakeSubsystem(){
+    intakePiston.set(intakePiston.get());
+  }
   
   //sets the intake roller motor at percent speed spd
   public void intake(double spd){
