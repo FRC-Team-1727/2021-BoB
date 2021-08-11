@@ -25,20 +25,20 @@ public class DriveSubsystem extends SubsystemBase {
   private double xAxis = 0;
   
   public DriveSubsystem() {
-    lEncoder.setDistancePerPulse(6 * Math.PI / 256.0);
-    rEncoder.setDistancePerPulse(6 * Math.PI / 256.0);
+    lEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
+    rEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
   }
   
   public void arcade(double y, double x){ //xbox y axis are reversed, so reverse the acutal parameter, not the formal parameter
-    if(Math.abs(y) > 0.2){
-      yAxis = y;
-    }else{
+    if(Math.abs(y) < kThreshold){
       yAxis = 0;
-    }
-    if(Math.abs(x) > 0.2){
-      xAxis = x;
     }else{
+      yAxis = y;
+    }
+    if(Math.abs(x) < kThreshold){
       xAxis = 0;
+    }else{
+      xAxis = x;
     }
     setDrive(yAxis + xAxis, yAxis - xAxis); //ask if driver wants to square drive
   }
@@ -62,7 +62,15 @@ public class DriveSubsystem extends SubsystemBase {
   }
   //precondition: valid target available
   public void align(double angleX){
-    
+    double output = 0;
+    output = angleX * kVisionP;
+    if(output < 0){
+      output -= kVisionLimit;
+    }else{
+      output += visionLimit;
+    }
+    setDrive(-output, output);
+    //note: in old code, if no target is found, then it will just turn to the right
   }
   
   public void resetEncoders(){
