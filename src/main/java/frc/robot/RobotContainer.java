@@ -88,9 +88,4 @@ public class RobotContainer {
     return m_autoCommand;
   }
 }
-/*
-ran into problem for intake: it doesn't seem like a JoystickButton can be created with an xbox trigger since the 
-trigger returns a range of double values 0.0-1.0 based on how far it is pressed down instead of being
-a button, so we may need to create a custom trigger - need to look into this further
 
-*/
