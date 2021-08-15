@@ -54,8 +54,9 @@ public class RobotContainer {
     m_shooterSubsystem.setDefaultCommand(new ShooterCommand(m_shooterSubsystem, 3200));
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
-    m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kLeft), xbox.getX(GenericHID.Hand.kRight)));
+    m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kRight), xbox.getX(GenericHID.Hand.kLeft)));
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
+    //left trigger: uptake
   }
 
   /**
@@ -66,11 +67,13 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //climb bindings
-    new JoystickButton(xbox, Button.kX.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
-    new JoystickButton(xbox, Button.kY.value).whenPressed(new ClimbCommand(m_climbSubsystem));
+    new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
+    new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
     new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
-    new JoystickButton(xbox, Button.kB.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1);
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1);
+    //uptake bindings
+    //X: reverse uptake
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
