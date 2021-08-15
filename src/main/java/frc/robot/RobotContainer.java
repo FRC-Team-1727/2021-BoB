@@ -26,6 +26,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import static frc.robot.Constants.XBoxConstants.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -44,7 +45,7 @@ public class RobotContainer {
     
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   
-  XboxController xbox = new XboxController(0);//address in future: whether we want constants for this too
+  XboxController xbox = new XboxController(kXBoxPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
