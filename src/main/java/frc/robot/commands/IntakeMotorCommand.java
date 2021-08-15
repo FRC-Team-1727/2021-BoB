@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import static frc.robot.Constants.XBoxConstants.*;
 
 public class IntakeMotorCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
@@ -13,7 +14,15 @@ public class IntakeMotorCommand extends CommandBase {
    */
   public IntakeMotorCommand(IntakeSubsystem subsystem, double spd) {
     m_intakeSubsystem = subsystem;
-    speed = spd;
+    if(spd <= 0){
+      if(spd > -kTriggerThreshold){
+        speed = 0;
+      }else{
+        speed = -1;
+      }
+    }else{
+      speed = spd;
+    }
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_intakeSubsystem);
   }
