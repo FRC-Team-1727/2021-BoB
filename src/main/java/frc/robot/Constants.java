@@ -49,5 +49,10 @@ public final class Constants {
     public static final int[] kClimbPorts1 = new int[] {4, 6};
     public static final int[] kClimbPorts2 = new int[] {5, 7};
   }
+  
+  public static final class XBoxConstants{
+    public static final int kXBoxPort = 0;
+    public static final double kTriggerThreshold = 0.2;
+  }
 
 }
