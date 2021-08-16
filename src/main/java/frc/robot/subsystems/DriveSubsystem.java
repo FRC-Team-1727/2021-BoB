@@ -40,7 +40,13 @@ public class DriveSubsystem extends SubsystemBase {
     }else{
       xAxis = x;
     }
-    setDrive(yAxis + xAxis, yAxis - xAxis); //ask if driver wants to square drive
+    double left = yAxis + xAxis;
+    double right = yAxis - xAxis;
+    if(squared){
+      left = left * Math.abs(left);
+      right = right * Math.abs(right);
+    }
+    setDrive(left, right);
   }
   
   public void setDrive(double left, double right){
