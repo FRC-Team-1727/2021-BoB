@@ -55,5 +55,9 @@ public final class Constants {
     public static final int kXBoxPort = 0;
     public static final double kTriggerThreshold = 0.2;
   }
+  
+  public static final class UptakeConstants{
+    public static final int kUptakePort = 11; //set to real uptake port, 11 is a placeholder
+  }
 
 }
