@@ -15,9 +15,9 @@ public final class Main {
   private Main() {}
 
   /**
-   * Main initialization function. Do not perform any initialization here.
+   * Main initialization function. Do not perform any initialization here. 
    *
-   * <p>If you change your main robot class, change the parameter type.
+   * <p>If you change your main robot class, change the parameter type to the following. 
    */
   public static void main(String... args) {
     RobotBase.startRobot(Robot::new);
