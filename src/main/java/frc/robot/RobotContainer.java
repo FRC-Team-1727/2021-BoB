@@ -61,6 +61,7 @@ public class RobotContainer {
     m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kRight), xbox.getX(GenericHID.Hand.kLeft)));
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
+    m_uptakeSubsystem.setDefaultCommand(new UptakeMotorCommand(m_uptakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
   }
 
   /**
@@ -78,6 +79,7 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1);
     //uptake bindings
     //X: reverse uptake
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeMotorCommand(m_uptakeSubsystem, 1);
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
