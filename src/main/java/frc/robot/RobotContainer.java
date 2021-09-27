@@ -17,6 +17,7 @@ import frc.robot.commands.ClimbCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.AimCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.UptakeCommand;
 
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -24,6 +25,7 @@ import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import frc.robot.subsystems.UptakeSubsystem;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import static frc.robot.Constants.XBoxConstants.*;
@@ -42,6 +44,7 @@ public class RobotContainer {
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
+  private final Uptake Subsystem m_uptakeSubsystem = new UptakeSubsystem();
     
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   
