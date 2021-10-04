@@ -28,6 +28,9 @@ public final class Constants {
     public static final double kVisionP = 0.02;
     public static final double kVisionLimit = 0.008;
     public static final boolean squared = false;
+
+    public static final double autonKP = 1;
+    public static final double autonError = 2;
   }
   
   public static final class ShooterConstants{
@@ -54,10 +57,6 @@ public final class Constants {
   public static final class XBoxConstants{
     public static final int kXBoxPort = 0;
     public static final double kTriggerThreshold = 0.2;
-  }
-  
-  public static final class UptakeConstants{
-    public static final int kUptakePort = 11; //set to real uptake port, 11 is a placeholder
   }
 
 }
