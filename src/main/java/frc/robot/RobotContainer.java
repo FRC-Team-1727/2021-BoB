@@ -44,7 +44,7 @@ public class RobotContainer {
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
-  private final Uptake Subsystem m_uptakeSubsystem = new UptakeSubsystem();
+  private final UptakeSubsystem m_uptakeSubsystem = new UptakeSubsystem();
     
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   
@@ -76,10 +76,10 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
     new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
-    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1);
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1));
     //uptake bindings
     //X: reverse uptake
-    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeMotorCommand(m_uptakeSubsystem, 1);
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeMotorCommand(m_uptakeSubsystem, 1));
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
