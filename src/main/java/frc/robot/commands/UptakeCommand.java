@@ -12,7 +12,7 @@ public class UptakeMotorCommand extends CommandBase {
   /*
    * @param subsystem The subsystem used by this command.
    */
-  public IntakeMotorCommand(IntakeSubsystem subsystem, double spd) {
+  public UptakeCommand(IntakeSubsystem subsystem, double spd) {
     m_uptakeSubsystem = subsystem;
     if(spd <= 0){
       if(spd > -kTriggerThreshold){
