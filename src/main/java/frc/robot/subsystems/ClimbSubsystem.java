@@ -12,7 +12,7 @@ public class ClimbSubsystem extends SubsystemBase {
   private DoubleSolenoid[] climb = new DoubleSolenoid[] {
     new DoubleSolenoid(kClimbPorts1[0],kClimbPorts1[1]),
     new DoubleSolenoid(kClimbPorts2[0],kClimbPorts2[1]) 
-  }
+  };
   //initializes pistons in current position so that they can use toggle() method
   public ClimbSubsystem(){
     for (DoubleSolenoid s : climb){
