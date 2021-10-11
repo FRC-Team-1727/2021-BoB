@@ -4,7 +4,7 @@ import frc.robot.subsystems.UptakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import static frc.robot.Constants.XBoxConstants.*;
 
-public class UptakeMotorCommand extends CommandBase {
+public class UptakeCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final UptakeSubsystem m_uptakeSubsystem;
   private double speed;
