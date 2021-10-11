@@ -16,10 +16,10 @@ public class AutoCommand {
     
     public void driveForward(int distance, int speed){
         double error = 10;
-
+        driveSubsystem.resetEncoders();
         while (error > autonError){
-            double lError = distance - lEncoder;
-            double rError = distance - rEncoder;
+            double lError = distance - driveSubsystem.lEncoder;
+            double rError = distance - driveSubsystem.rEncoder;
             driveSubsystem.setDrive(lError * speed * autonKP,rError * speed * autonKP);
             error = (lError + rError)/2;
         }
@@ -27,10 +27,10 @@ public class AutoCommand {
     
     public void turn(int distance, int speed){
         double error = 10;
-
+        driveSubsystem.resetEncoders();
         while (error > autonError){
-            double lError = distance - lEncoder;
-            double rError = distance - rEncoder;
+            double lError = Math.abs(distance - driveSubsystem.lEncoder);
+            double rError = Math.abs(distance - driveSubsystem.rEncoder);
             driveSubsystem.setDrive(-lError * speed * autonKP,rError * speed * autonKP);
             error = (lError + rError)/2;
         }
