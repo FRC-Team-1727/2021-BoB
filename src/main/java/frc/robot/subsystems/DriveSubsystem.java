@@ -73,7 +73,7 @@ public class DriveSubsystem extends SubsystemBase {
     if(output < 0){
       output -= kVisionLimit;
     }else{
-      output += visionLimit;
+      output += kVisionLimit;
     }
     setDrive(-output, output);
     //note: in old code, if no target is found, then it will just turn to the right
