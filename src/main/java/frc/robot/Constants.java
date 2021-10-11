@@ -48,6 +48,10 @@ public final class Constants {
     public static final int[] kIntakePistonPort = new int[] {1, 3};
   }
   
+  public static final class UptakeConstants{
+    public static final int kUptakePort = 11; //placeholder
+  }
+  
   public static final class ClimbConstants{
     public static final int[] kHookPorts = new int[] {0, 2};
     public static final int[] kClimbPorts1 = new int[] {4, 6};
