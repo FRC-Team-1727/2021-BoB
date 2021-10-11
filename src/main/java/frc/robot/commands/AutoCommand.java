@@ -11,7 +11,7 @@ public class AutoCommand {
     
     
     public AutoCommand() {
-        shooterSystem.setSpeed(3200);
+        shooterSubsystem.setSpeed(3200);
     }
     
     public void driveForward(int distance, int speed){
