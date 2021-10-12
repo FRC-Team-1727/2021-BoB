@@ -40,7 +40,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
-  private final CimbSubsystem m_climbSubsystem = new ClimbSubsystem();
+  private final ClimbSubsystem m_climbSubsystem = new ClimbSubsystem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
@@ -65,7 +65,7 @@ public class RobotContainer {
     
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
-    m_uptakeSubsystem.setDefaultCommand(new UptakeMotorCommand(m_uptakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
+    m_uptakeSubsystem.setDefaultCommand(new UptakeCommand(m_uptakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
   }
 
   /**
@@ -83,7 +83,7 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1));
     //uptake bindings
     //X: reverse uptake
-    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeMotorCommand(m_uptakeSubsystem, 1));
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, 1));
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
