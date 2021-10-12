@@ -30,6 +30,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
   
   public void arcade(double y, double x){ //xbox y axis are reversed, so reverse the acutal parameter, not the formal parameter
+    //TRY: just try using the preset drive controls that they have and copy from the wpilib github example if this doesn't work
     if(Math.abs(y) < kThreshold){
       yAxis = 0;
     }else{
