@@ -15,11 +15,11 @@ package frc.robot;
 public final class Constants {
   
   public static final class DriveConstants{
-    public static final int[] kLDrivePort = new int[] {3, 4};
+    public static final int[] kLDrivePort = new int[] {1, 2};
     public static final int[] kLEncoderPort = new int[] {0, 1};
     public static final boolean kLEncoderReverse = true;
     
-    public static final int[] kRDrivePort = new int[] {1, 2};
+    public static final int[] kRDrivePort = new int[] {3, 4};
     public static final int[] kREncoderPort = new int[] {4, 5};
     public static final boolean kREncoderReverse = false;
     
@@ -44,15 +44,15 @@ public final class Constants {
   }
   
   public static final class IntakeConstants{
-    public static final int kIntakePort = 8;
+    public static final int kIntakePort = 6;
     public static final int[] kIntakePistonPort = new int[] {1, 3};
   }
   
   public static final class UptakeConstants{
-    public static final int kUptakePort = 6;
+    public static final int kUptakePort = 7;
     public static final int kVLeftPort = 5;
     public static final double kVLeftMultiplier = 0.8;
-    public static final int kVRightPort = 7;
+    public static final int kVRightPort = 8;
     public static final double kVRightMultiplier = 1.0;
   }
   
