@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class AimCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final DriveSubsystme m_driveSubsystem;
+  private final DriveSubsystem m_driveSubsystem;
   private final ShooterSubsystem m_shooterSubsystem;
   private final VisionSubsystem m_visionSubsystem;
 
