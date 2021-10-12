@@ -23,6 +23,8 @@ public class IntakeMotorCommand extends CommandBase {
     }else{
       speed = spd;
     }
+    //TRY: uncomment this if moving the above code to execute(){}
+    //speed = spd;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_intakeSubsystem);
   }
@@ -34,6 +36,17 @@ public class IntakeMotorCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+//TRY: if intake trigger still isn't working, try moving the part of the code that takes care of thresholds here in the execute function
+//     if(speed <= 0){
+//       if(speed > -kTriggerThreshold){
+//         speed = 0;
+//       }else{
+//         speed = -1;
+//       }
+//     }else{
+//       speed = spd;
+//     }
+//TRY: if this doesn't work either, try passing in the xbox controller to this command and have execute(){} constantly pull inputs from xbox
     m_intakeSubsystem.intake(speed);
   }
 
