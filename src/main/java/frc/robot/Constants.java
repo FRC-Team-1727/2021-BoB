@@ -49,7 +49,11 @@ public final class Constants {
   }
   
   public static final class UptakeConstants{
-    public static final int kUptakePort = 11; //placeholder
+    public static final int kUptakePort = 6;
+    public static final int kVLeftPort = 5;
+    public static final double kVLeftMultiplier = 0.8;
+    public static final int kVRightPort = 7;
+    public static final double kVRightMultiplier = 1.0;
   }
   
   public static final class ClimbConstants{
