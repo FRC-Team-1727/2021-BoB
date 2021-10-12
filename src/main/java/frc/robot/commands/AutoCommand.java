@@ -6,7 +6,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class AutoCommand {
-    private final ShooterSubsystem shooterSubsystem;
+ /*   private final ShooterSubsystem shooterSubsystem;
     private final DriveSubsystem driveSubsystem;
     
     
@@ -36,5 +36,5 @@ public class AutoCommand {
         }
     }
     
-    
+    */
 }
