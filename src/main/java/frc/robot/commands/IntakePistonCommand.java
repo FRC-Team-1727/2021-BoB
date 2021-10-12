@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class IntakePistonCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final IntakeSubsytem m_intakeSubsystem;
+  private final IntakeSubsystem m_intakeSubsystem;
 
   /*
    * @param subsystem The subsystem used by this command.
