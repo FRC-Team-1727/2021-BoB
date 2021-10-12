@@ -33,7 +33,7 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    arcade(yAxis, xAxis);
+    m_driveSubsystem.arcade(yAxis, xAxis);
     //m_driveSubsystem.arcadeDrive(m_forward.getAsDouble(), m_rotation.getAsDouble());
   }
 
