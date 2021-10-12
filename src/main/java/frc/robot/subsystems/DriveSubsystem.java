@@ -8,16 +8,22 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class DriveSubsystem extends SubsystemBase {
   private VictorSPX[] lDrive = new VictorSPX[]{
     new VictorSPX(kLDrivePort[0]),
     new VictorSPX(kLDrivePort[1])
-  };
+  };  
   private VictorSPX[] rDrive = new VictorSPX[]{
     new VictorSPX(kRDrivePort[0]),
     new VictorSPX(kRDrivePort[1])
   };
+  //private final MotorControllerGroup lDrive = new MotorControllerGroup(new VictorSPX(kLDrivePort[0]), new VictorSPX(kLDrivePort[1]));
+  //private final MotorControllerGroup rDrive = new MotorControllerGroup(new VictorSPX(kRDrivePort[0]), new VictorSPX(kRDrivePort[1]));
+  //private final DifferentialDrive drive = new DifferentialDrive(lDrive, rDrive);
+  
   private Encoder lEncoder = new Encoder(kLEncoderPort[0], kLEncoderPort[1], kLEncoderReverse, EncodingType.k4X);
   private Encoder rEncoder = new Encoder(kREncoderPort[0], kREncoderPort[1], kREncoderReverse, EncodingType.k4X);
   
@@ -27,10 +33,13 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     lEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
     rEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
+    //lDrive.setInverted(true);
+    //check which side should be reversed
   }
   
   public void arcade(double y, double x){ //xbox y axis are reversed, so reverse the acutal parameter, not the formal parameter
     //TRY: just try using the preset drive controls that they have and copy from the wpilib github example if this doesn't work
+    //drive.arcadeDrive(y, x);
     if(Math.abs(y) < kThreshold){
       yAxis = 0;
     }else{
