@@ -59,6 +59,10 @@ public class RobotContainer {
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
     m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kRight), xbox.getX(GenericHID.Hand.kLeft)));
+    
+    //TRY: (this is straight up copied from the wpilib example
+    //m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -(xbox::getRightY), xbox::getLeftX));
+    
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
     m_uptakeSubsystem.setDefaultCommand(new UptakeMotorCommand(m_uptakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
