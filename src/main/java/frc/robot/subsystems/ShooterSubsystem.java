@@ -50,7 +50,7 @@ public class ShooterSubsystem extends SubsystemBase {
   
   //precondition: target available (call this method in AimCommand in if statement that checks for target with VisionSubsystem)
   public void adjust(double area){
-    setpoint = getSetPoint(area);
+    setpoint = getSetpoint(area);
     if(setpoint < 1){ 
       controller.setReference(0, ControlType.kVoltage);
     }else{
@@ -71,7 +71,7 @@ public class ShooterSubsystem extends SubsystemBase {
     controller.setP(kP);
     controller.setI(kI);
     controller.setD(kD);
-    Controller.setFF(kF);
+    controller.setFF(kF);
   }
 
 }
