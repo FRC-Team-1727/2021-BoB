@@ -12,7 +12,7 @@ public class UptakeCommand extends CommandBase {
   /*
    * @param subsystem The subsystem used by this command.
    */
-  public UptakeCommand(IntakeSubsystem subsystem, double spd) {
+  public UptakeCommand(UptakeSubsystem subsystem, double spd) {
     m_uptakeSubsystem = subsystem;
     if(spd <= 0){
       if(spd > -kTriggerThreshold){
