@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.UptakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import static frc.robot.Constants.XBoxConstants.*;
+import java.util.function.DoubleSupplier;
 
 public class UptakeCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
@@ -12,21 +13,25 @@ public class UptakeCommand extends CommandBase {
   /*
    * @param subsystem The subsystem used by this command.
    */
-  public UptakeCommand(UptakeSubsystem subsystem, double spd) {
+  public UptakeCommand(UptakeSubsystem subsystem, DoubleSupplier spd) {
     m_uptakeSubsystem = subsystem;
-    if(spd >= 0){
-      if(spd < kTriggerThreshold){
+    speed = spd.getAsValue();
+    if(speed >= 0){
+      if(speed < kTriggerThreshold){
         speed = 0;
       }else{
-        speed = 0.4;
+        speed = 1;
       }
-    }else{
-      speed = spd;
     }
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_uptakeSubsystem);
   }
-
+  
+  public UptakeCommand(UptakeSubsystem subsystem, double spd){
+    m_uptakeSubsystem = subsystem;
+    addRequirements(m_uptakeSubsystem);
+    speed = spd;
+  }
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
