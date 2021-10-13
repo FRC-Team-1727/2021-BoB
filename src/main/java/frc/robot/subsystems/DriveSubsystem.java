@@ -8,8 +8,9 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 
 public class DriveSubsystem extends SubsystemBase {
   private VictorSPX[] lDrive = new VictorSPX[]{
@@ -20,9 +21,15 @@ public class DriveSubsystem extends SubsystemBase {
     new VictorSPX(kRDrivePort[0]),
     new VictorSPX(kRDrivePort[1])
   };
-  //private final MotorControllerGroup lDrive = new MotorControllerGroup(new VictorSPX(kLDrivePort[0]), new VictorSPX(kLDrivePort[1]));
-  //private final MotorControllerGroup rDrive = new MotorControllerGroup(new VictorSPX(kRDrivePort[0]), new VictorSPX(kRDrivePort[1]));
-  //private final DifferentialDrive drive = new DifferentialDrive(lDrive, rDrive);
+
+  // private VictorSPX lDr0 = new VictorSPX(kLDrivePort[0]);
+  // private VictorSPX lDr1 = new VictorSPX(kLDrivePort[1]);
+  // private VictorSPX rDr0 = new VictorSPX(kRDrivePort[0]);
+  // private VictorSPX rDr1 = new VictorSPX(kRDrivePort[1]);
+
+  // private final SpeedControllerGroup lDriveG = new SpeedControllerGroup(lDr0, lDr1);
+  // private final SpeedControllerGroup rDriveG = new SpeedControllerGroup(rDr0, rDr1);
+  // private final DifferentialDrive drive = new DifferentialDrive(lDriveG, rDriveG);
   
   private Encoder lEncoder = new Encoder(kLEncoderPort[0], kLEncoderPort[1], kLEncoderReverse, EncodingType.k4X);
   private Encoder rEncoder = new Encoder(kREncoderPort[0], kREncoderPort[1], kREncoderReverse, EncodingType.k4X);
@@ -33,7 +40,7 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
     lEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
     rEncoder.setDistancePerPulse(kWheelDiameter * Math.PI / 256);
-    //lDrive.setInverted(true);
+    //lDriveG.setInverted(true);
     //check which side should be reversed
   }
   
@@ -52,10 +59,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
     double left = yAxis + xAxis;
     double right = yAxis - xAxis;
-    if(squared){
-      left = left * Math.abs(left);
-      right = right * Math.abs(right);
-    }
+    
     setDrive(left, right);
   }
   
@@ -66,14 +70,14 @@ public class DriveSubsystem extends SubsystemBase {
   
   public void setLDrive(double spd){
     for(VictorSPX m : lDrive){
-      m.set(ControlMode.PercentOutput, -spd); 
+      m.set(ControlMode.PercentOutput, spd); 
       //motors are reversed on robot, so when we fix electronics we need to make sure this and encoders match
     }
   }
   
   public void setRDrive(double spd){
     for(VictorSPX m : rDrive){
-      m.set(ControlMode.PercentOutput, spd);
+      m.set(ControlMode.PercentOutput, -spd);
     }
   }
   //precondition: valid target available
