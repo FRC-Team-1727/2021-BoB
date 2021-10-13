@@ -14,11 +14,11 @@ public class UptakeCommand extends CommandBase {
    */
   public UptakeCommand(UptakeSubsystem subsystem, double spd) {
     m_uptakeSubsystem = subsystem;
-    if(spd <= 0){
-      if(spd > -kTriggerThreshold){
+    if(spd >= 0){
+      if(spd < kTriggerThreshold){
         speed = 0;
       }else{
-        speed = -1;
+        speed = 1;
       }
     }else{
       speed = spd;
