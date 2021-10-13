@@ -21,9 +21,13 @@ public class ClimbSubsystem extends SubsystemBase {
     hook.set(kForward);
   }
   
-  //retracts the tiny piston to extend the hooks
-  public void releaseHook(){
-    hook.set(kReverse);
+  //sets piston position based on parameter
+  public void releaseHook(int state){
+    if(state == 0){
+      hook.set(kReverse);
+    }else{
+      hook.set(kForward);
+    }
   }
   
   //toggles the state of the climb pistons
