@@ -16,7 +16,7 @@ public class IntakeSubsystem extends SubsystemBase {
   //initializes intakePiston in current position so that it can use toggle() method
   public IntakeSubsystem(){
     //intakePiston.set(intakePiston.get());
-    intakePiston.set(Value.kReverse);
+    intakePiston.set(kReverse);
   }
   
   //sets the intake roller motor at percent speed spd
