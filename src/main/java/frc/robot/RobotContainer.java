@@ -61,16 +61,11 @@ public class RobotContainer {
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
     
-    //m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, xbox.getY(GenericHID.Hand.kRight), xbox.getX(GenericHID.Hand.kLeft)));
     m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem,()->-xbox.getY(GenericHID.Hand.kRight), ()->xbox.getX(GenericHID.Hand.kLeft)));
-    
-    //TRY:
-    //() -> xbox.getY(GenericHID.Hand.kRight) //try it first without inverting it, then invert it if it needs to be
-    //() -> xbox.getX(GenericHID.Hand.kLeft)
 
-    m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem,()-> -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
+    m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, ()-> -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
-    m_uptakeSubsystem.setDefaultCommand(new UptakeCommand(m_uptakeSubsystem, xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
+    m_uptakeSubsystem.setDefaultCommand(new UptakeCommand(m_uptakeSubsystem, ()-> xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
   }
 
   /**
@@ -85,15 +80,10 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
     new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
-    //THIS HAS ERRORS: WE JUST NEED A WAY TO PASS IN A DOUBLE SUPPLIER INTO THE FUNCTIONS
-    //IDEA: HAVE TWO DIFFERENT COMMANDS/CONSTRUCTORS, ONE TAKES IN A DOUBLE FOR BUTTON
-    //AND THE OTHER TAKES IN A DOUBLE SUPPLIER
-    DoubleSupplier intakeSpd = 0.4;
-    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
+    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem), 1.0);
     new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, intakeSpd));
     //uptake bindings
-
-    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, -0.4));
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, -1.0));
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
@@ -105,13 +95,6 @@ public class RobotContainer {
     // new JoystickButton(xbox, Button.kA.value).whileHeld(new TestDriveCommand(m_driveSubsystem, -0.4, true, true));
     // new JoystickButton(xbox, Button.kX.value).whileHeld(new TestDriveCommand(m_driveSubsystem, 0.4, false, true));
     // new JoystickButton(xbox, Button.kB.value).whileHeld(new TestDriveCommand(m_driveSubsystem, 0.4, true, false));
-    
-    //LIST OF CHANGES SINCE LAST MEETING TIME WITH ROBOT: 
-    // - INVERTED V-BELT (ROBOT CONTAINER AND UPTAKE COMMAND)
-    // - MADE NEW FILE (TEST DRIVE COMMAND)
-    // - BINDINGS FOR DRIVE ON BUTTONS (ABOVE), AND COMMENTS FOR POSSIBLE FIX FOR DEFAULT DRIVE COMMAND
-    // NEED TO DO: GET ALL THESE CHANGES TO DRIVER STATION WITHOUT MAKING CONFLICTS, THEN UPDATE CODE ON GITHUB TO WHAT'S ON DRIVER STATION
-    
 
   }
 
