@@ -18,7 +18,7 @@ public class UptakeCommand extends CommandBase {
       if(spd < kTriggerThreshold){
         speed = 0;
       }else{
-        speed = 1;
+        speed = 0.4;
       }
     }else{
       speed = spd;
