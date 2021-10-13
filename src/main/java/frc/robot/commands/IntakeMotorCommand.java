@@ -30,6 +30,12 @@ public class IntakeMotorCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_intakeSubsystem);
   }
+  //overloaded constructor
+  public IntakeMotorCommand(IntakeSubsystem subsystem, double spd){
+    m_intakeSubsystem = subsystem;
+    addRequirements(m_intakeSubsystem);
+    speed = spd;
+  }
 
   // Called when the command is initially scheduled.
   @Override
