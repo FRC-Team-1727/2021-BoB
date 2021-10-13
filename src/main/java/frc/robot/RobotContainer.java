@@ -59,9 +59,9 @@ public class RobotContainer {
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
     m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -xbox.getY(GenericHID.Hand.kRight), xbox.getX(GenericHID.Hand.kLeft)));
-    
-    //TRY: (this is straight up copied from the wpilib example
-    //m_driveSubsystem.setDefaultCommand(new DriveCommand(m_driveSubsystem, -(xbox::getRightY), xbox::getLeftX));
+    //TRY:
+    //() -> xbox.getY(GenericHID.Hand.kRight) //try it first without inverting it, then invert it if it needs to be
+    //() -> xbox.getX(GenericHID.Hand.kLeft)
     
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
@@ -75,6 +75,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    
     //climb bindings
     new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
     new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
@@ -82,12 +83,25 @@ public class RobotContainer {
     new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
     new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1));
     //uptake bindings
-    //X: reverse uptake
     new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, -1));
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
     new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new AimCommand(m_driveSubsystem, m_shooterSubsystem, m_visionSubsystem));
+    
+    /*
+    //TEST BINDINGS FOR DRIVE, comment out default command 
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new TestDriveCommand(m_driveSubsystem, 0.4, true, true);
+    new JoystickButton(xbox, Button.kA.value).whileHeld(new TestDriveCommand(m_driveSubsystem, -0.4, true, true);
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new TestDriveCommand(m_driveSubsystem, 0.4, false, true);
+    new JoystickButton(xbox, Button.kB.value).whileHeld(new TestDriveCommand(m_driveSubsystem, 0.4, true, false);
+    
+    //LIST OF CHANGES SINCE LAST MEETING TIME WITH ROBOT: 
+    // - INVERTED V-BELT (ROBOT CONTAINER AND UPTAKE COMMAND)
+    // - MADE NEW FILE (TEST DRIVE COMMAND)
+    // - BINDINGS FOR DRIVE ON BUTTONS (ABOVE), AND COMMENTS FOR POSSIBLE FIX FOR DEFAULT DRIVE COMMAND
+    // NEED TO DO: GET ALL THESE CHANGES TO DRIVER STATION WITHOUT MAKING CONFLICTS, THEN UPDATE CODE ON GITHUB TO WHAT'S ON DRIVER STATION
+    */
     
   }
 
