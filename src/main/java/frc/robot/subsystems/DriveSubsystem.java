@@ -59,6 +59,11 @@ public class DriveSubsystem extends SubsystemBase {
     }
     double left = yAxis + xAxis;
     double right = yAxis - xAxis;
+
+    if(squared){
+      left = left * Math.abs(left);
+      right = right * Math.abs(right);
+    }
     
     setDrive(left, right);
   }
