@@ -16,8 +16,9 @@ public class ClimbSubsystem extends SubsystemBase {
   //initializes pistons in current position so that they can use toggle() method
   public ClimbSubsystem(){
     for (DoubleSolenoid s : climb){
-      s.set(s.get());
+      s.set(kReverse);
     }
+    hook.set(kForward);
   }
   
   //retracts the tiny piston to extend the hooks
