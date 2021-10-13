@@ -3,25 +3,27 @@ package frc.robot.commands;
 import frc.robot.subsystems.IntakeSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import static frc.robot.Constants.XBoxConstants.*;
+import java.util.function.DoubleSupplier;
+
 
 public class IntakeMotorCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final IntakeSubsystem m_intakeSubsystem;
   private double speed;
+  
 
   /*
    * @param subsystem The subsystem used by this command.
    */
-  public IntakeMotorCommand(IntakeSubsystem subsystem, double spd) {
+  public IntakeMotorCommand(IntakeSubsystem subsystem, DoubleSupplier spd) {
     m_intakeSubsystem = subsystem;
-    if(spd <= 0){
-      if(spd > -kTriggerThreshold){
+    speed = spd.getAsDouble();
+    if(speed <= 0){
+      if(speed > -kTriggerThreshold){
         speed = 0;
       }else{
         speed = -1;
       }
-    }else{
-      speed = spd;
     }
     //TRY: uncomment this if moving the above code to execute(){}
     //speed = spd;
