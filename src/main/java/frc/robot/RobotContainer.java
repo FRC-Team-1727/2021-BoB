@@ -66,6 +66,8 @@ public class RobotContainer {
     m_intakeSubsystem.setDefaultCommand(new IntakeMotorCommand(m_intakeSubsystem, ()-> -xbox.getTriggerAxis(GenericHID.Hand.kRight)));
     //left trigger: uptake
     m_uptakeSubsystem.setDefaultCommand(new UptakeCommand(m_uptakeSubsystem, ()-> xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
+    
+    m_climbSubsystem.setDefaultCommand(new HookReleaseCommand(m_climbSubsystem, 1));
   }
 
   /**
@@ -77,11 +79,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
     //climb bindings
-    new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem));
+    new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem, 0).withTimeout(2));
     new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
-    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem), 1.0);
-    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, intakeSpd));
+    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1.0));
     //uptake bindings
     new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, -1.0));
     //shooter bindings
