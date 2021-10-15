@@ -94,7 +94,7 @@ public class DriveSubsystem extends SubsystemBase {
     }else{
       output += kVisionLimit;
     }
-    setDrive(-output, output);
+    setDrive(output, -output);
     //note: in old code, if no target is found, then it will just turn to the right
   }
   
@@ -104,5 +104,19 @@ public class DriveSubsystem extends SubsystemBase {
   }
   
   //other functions for auton: driving straight a certain distance (inches) based on parameter, turning certain angle (degrees) based on parameter
+  public void driveForward(int distance, double speed){
+    double error = 10;
+    resetEncoders();
+    while (Math.abs(error) > autonError){
+        double lError = distance - lEncoder.get();
+        double rError = distance - rEncoder.get();
+        setDrive(lError * speed * autonKP,rError * speed * autonKP);
+        error = (lError + rError)/2;
+    }
+  }
+
+  public void driveFwdTime(int seconds, double speed){
+
+  }
 
 }
