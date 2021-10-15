@@ -19,6 +19,9 @@ import frc.robot.commands.AimCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.UptakeCommand;
 import frc.robot.commands.TestDriveCommand;
+import frc.robot.commands.InMotComdouble;
+import frc.robot.commands.UpMotComdouble;
+import frc.robot.commands.AutoCommand;
 
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -48,7 +51,7 @@ public class RobotContainer {
   private final VisionSubsystem m_visionSubsystem = new VisionSubsystem();
   private final UptakeSubsystem m_uptakeSubsystem = new UptakeSubsystem();
     
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final Command m_autoCommand = new AutoCommand(m_shooterSubsystem,m_driveSubsystem,m_uptakeSubsystem);
   
   XboxController xbox = new XboxController(kXBoxPort);
 
@@ -57,7 +60,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     //default commands
-    //m_shooterSubsystem.setDefaultCommand(new ShooterCommand(m_shooterSubsystem, 3200));
+    m_shooterSubsystem.setDefaultCommand(new ShooterCommand(m_shooterSubsystem, 3650));
     /*^speed from auto. if default speed should be something else then we can set speed to this in auto and it will go to default
     when all commands get canceled when we go into teleop*/
     
@@ -67,7 +70,7 @@ public class RobotContainer {
     //left trigger: uptake
     m_uptakeSubsystem.setDefaultCommand(new UptakeCommand(m_uptakeSubsystem, ()-> xbox.getTriggerAxis(GenericHID.Hand.kLeft)));
     
-    m_climbSubsystem.setDefaultCommand(new HookReleaseCommand(m_climbSubsystem, 1));
+    m_climbSubsystem.setDefaultCommand(new HookReleaseCommand(m_climbSubsystem, 0));
   }
 
   /**
@@ -79,13 +82,14 @@ public class RobotContainer {
   private void configureButtonBindings() {
     
     //climb bindings
-    new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem, 0).withTimeout(2));
+    new JoystickButton(xbox, Button.kB.value).whenPressed(new HookReleaseCommand(m_climbSubsystem, 1).withTimeout(2));
+    new JoystickButton(xbox, Button.kB.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 0));
     new JoystickButton(xbox, Button.kA.value).whenPressed(new ClimbCommand(m_climbSubsystem));
     //intake bindings
     new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new IntakePistonCommand(m_intakeSubsystem));
-    new JoystickButton(xbox, Button.kY.value).whileHeld(new IntakeMotorCommand(m_intakeSubsystem, 1.0));
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new InMotComdouble(m_intakeSubsystem, 1));
     //uptake bindings
-    new JoystickButton(xbox, Button.kX.value).whileHeld(new UptakeCommand(m_uptakeSubsystem, -1.0));
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new UpMotComdouble(m_uptakeSubsystem, -1));
     //shooter bindings
     new JoystickButton(xbox, Button.kBack.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 4500));
     new JoystickButton(xbox, Button.kStart.value).whenPressed(new ShooterCommand(m_shooterSubsystem, 3650));
