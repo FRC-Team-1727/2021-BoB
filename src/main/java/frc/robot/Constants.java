@@ -25,7 +25,7 @@ public final class Constants {
     
     public static final double kThreshold = 0.2;
     public static final double kWheelDiameter = 6; //replace this with empirical wheel diameter after finding it
-    public static final double kVisionP = 0.02;
+    public static final double kVisionP = 0.01;
     public static final double kVisionLimit = 0.008;
     public static final boolean squared = false;
 
